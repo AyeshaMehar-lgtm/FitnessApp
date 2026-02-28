@@ -43,10 +43,11 @@ class _WeightScreenState extends State<WeightScreen> {
                     padding:
                     const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: Colors.blue[50],
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: const Text("2 of 6"),
+
                   )
                 ],
               ),

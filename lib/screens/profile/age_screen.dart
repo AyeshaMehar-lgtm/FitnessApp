@@ -25,21 +25,16 @@ class _AgeScreenState extends State<AgeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    List<int> ages =
-    List.generate(maxAge - minAge + 1, (i) => minAge + i);
+    List<int> ages = List.generate(maxAge - minAge + 1, (i) => minAge + i);
 
     return Scaffold(
       backgroundColor: Colors.white,
-
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.transparent,
         centerTitle: false,
-
         leading: const BackButton(color: Colors.black),
-
-        titleSpacing: 8, // 👈 thora right shift
-
+        titleSpacing: 8,
         title: const Text(
           'Assessment',
           style: TextStyle(
@@ -48,23 +43,25 @@ class _AgeScreenState extends State<AgeScreen> {
             fontSize: 18,
           ),
         ),
-
-        actions: const [
-          Padding(
-            padding: EdgeInsets.only(right: 16),
-            child: Center(
+        actions: [
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+            margin: const EdgeInsets.only(right: 16),
+            decoration: BoxDecoration(
+              color: Colors.blue[50],
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: const Center(
               child: Text(
-                '1 of 6',
+                "2 of 6",
                 style: TextStyle(
-                  color: Colors.black54,
-                  fontWeight: FontWeight.w600,
-                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.blue,
                 ),
               ),
             ),
-          )
+          ),
         ],
-
         flexibleSpace: Container(
           decoration: const BoxDecoration(
             gradient: LinearGradient(
@@ -78,11 +75,9 @@ class _AgeScreenState extends State<AgeScreen> {
           ),
         ),
       ),
-
       body: Column(
         children: [
           const SizedBox(height: 32),
-
           const Text(
             "What’s your Age?",
             style: TextStyle(
@@ -91,9 +86,7 @@ class _AgeScreenState extends State<AgeScreen> {
               color: Colors.black,
             ),
           ),
-
           const SizedBox(height: 40),
-
           Expanded(
             child: Center(
               child: SizedBox(
@@ -118,9 +111,7 @@ class _AgeScreenState extends State<AgeScreen> {
                         duration: const Duration(milliseconds: 200),
                         margin: const EdgeInsets.symmetric(horizontal: 100),
                         decoration: BoxDecoration(
-                          color: isSelected
-                              ? Colors.orange
-                              : Colors.transparent,
+                          color: isSelected ? Colors.orange : Colors.transparent,
                           borderRadius: BorderRadius.circular(16),
                         ),
                         alignment: Alignment.center,
@@ -143,10 +134,8 @@ class _AgeScreenState extends State<AgeScreen> {
               ),
             ),
           ),
-
           Padding(
-            padding:
-            const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
             child: SizedBox(
               width: double.infinity,
               height: 55,
@@ -154,8 +143,7 @@ class _AgeScreenState extends State<AgeScreen> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(
-                        builder: (_) => const WeightScreen()),
+                    MaterialPageRoute(builder: (_) => const WeightScreen()),
                   );
                 },
                 style: ElevatedButton.styleFrom(

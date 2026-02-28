@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'home_screen.dart';
 import 'forgot_password_screen.dart';
 import '../../constants/app_colors.dart';
+import 'sign_up_screen.dart';
+import '../../widgets/back_navigation.dart';
+
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
@@ -14,11 +17,13 @@ class _SignInScreenState extends State<SignInScreen> {
 
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+      bool isPasswordHidden = true;
 
   void signIn() {
 
     String email = emailController.text.trim();
     String password = passwordController.text.trim();
+
 
     if (email.isEmpty || password.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -38,6 +43,14 @@ class _SignInScreenState extends State<SignInScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.white,
+        appBar: AppBar(
+          elevation: 0,
+          backgroundColor: Colors.white,
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back_ios, color: Colors.black),
+            onPressed: () => Navigator.pop(context),
+          ),
+        ),
 
       body: SingleChildScrollView(
         child: Padding(
@@ -45,10 +58,7 @@ class _SignInScreenState extends State<SignInScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-
-              const SizedBox(height: 80),
-
-              // 🔶 Orange Box with Logo
+              const SizedBox(height: 10),
               Center(
                 child: Container(
                   height: 80,
@@ -110,6 +120,7 @@ class _SignInScreenState extends State<SignInScreen> {
                 keyboardType: TextInputType.emailAddress,
                 decoration: InputDecoration(
                   hintText: "Enter your email",
+                  prefixIcon: const Icon(Icons.email_outlined),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -128,9 +139,24 @@ class _SignInScreenState extends State<SignInScreen> {
 
               TextField(
                 controller: passwordController,
-                obscureText: true,
+                obscureText: isPasswordHidden,
+                obscuringCharacter: '*',
                 decoration: InputDecoration(
                   hintText: "Enter your password",
+                  prefixIcon: const Icon(Icons.lock_outline),
+                  suffixIcon: IconButton(
+                    icon: Icon(
+                      isPasswordHidden
+                          ? Icons.remove_red_eye_outlined
+                          : Icons.visibility_off_outlined,
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        isPasswordHidden = !isPasswordHidden;
+
+                      });
+                    },
+                  ),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -229,20 +255,39 @@ class _SignInScreenState extends State<SignInScreen> {
 
               const SizedBox(height: 25),
 
-              // 🔹 Sign Up
+              // // 🔹 Sign Up
               Center(
-                child: GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const ForgotPasswordScreen()),
-                    );
-                  },
-                  child: const Text(
-                    "Don't have an account? Sign Up",
-                    style: TextStyle(
-                      fontWeight: FontWeight.w500,
+                child: RichText(
+                  text: TextSpan(
+                    text: "Don't have an account? ",
+                    style: const TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+
+
                     ),
+                    children: [
+                      WidgetSpan(
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const SignUpScreen(),
+                              ),
+                            );
+                          },
+                          child: const Text(
+                            "Sign Up",
+                            style: TextStyle(
+                              color: Colors.red,
+                              decoration: TextDecoration.underline,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ),
@@ -268,11 +313,10 @@ class _SignInScreenState extends State<SignInScreen> {
                 ),
               ),
               const SizedBox(height: 30),
-            ],
-          ),
+              ],
+            ), // Column
+          ), // Padding
         ),
-      ),
-    );
-  }
-}
-
+      );
+    }
+}// S
