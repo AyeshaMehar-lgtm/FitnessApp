@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../widgets/back_navigation.dart';
 import 'home_screen.dart';
 
 class ResetScreen extends StatelessWidget {

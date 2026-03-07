@@ -3,7 +3,7 @@ import '../../constants/app_colors.dart';
 import '../../widgets/back_navigation.dart';
 import '../../widgets/profile/unit_toggle.dart';
 import '../../widgets/profile/weight_ruler.dart';
-import 'gender_screen.dart'; // 👈 next screen import karo
+import 'gender_screen.dart'; //
 
 class WeightScreen extends StatefulWidget {
   const WeightScreen({super.key});

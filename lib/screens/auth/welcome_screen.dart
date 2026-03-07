@@ -141,9 +141,9 @@
 // }
 //
 
+import 'package:fitness_app/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'sign_in_screen.dart';
-import 'sign_up_screen.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
@@ -158,7 +158,7 @@ class WelcomeScreen extends StatelessWidget {
           Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("assets/images/jym.png"),
+                image: AssetImage("assets/images/equipments.png"),
                 fit: BoxFit.cover,
               ),
             ),
@@ -223,9 +223,9 @@ class WelcomeScreen extends StatelessWidget {
                     );
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.white, // Button white
+                    backgroundColor: AppColors.pulseOrange, // Button white
                     padding: const EdgeInsets.symmetric(
-                        vertical: 16, horizontal: 90),
+                        vertical: 16, horizontal: 50),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),
                     ),
@@ -233,7 +233,7 @@ class WelcomeScreen extends StatelessWidget {
                   child: const Text(
                     "Get Started",
                     style: TextStyle(
-                      color: Colors.black, // Text black
+                      color: Colors.white, // Text black
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
                     ),
@@ -270,34 +270,14 @@ class WelcomeScreen extends StatelessWidget {
                         ),
                       ),
                     ),
+                    ],
+                    ),
 
                     const SizedBox(width: 10),
-
-                    /// Sign Up
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (_) => const SignUpScreen(),
-                          ),
-                        );
-                      },
-                      child: const Text(
-                        "Sign Up",
-                        style: TextStyle(
-                          color: Colors.orange,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-
                 const SizedBox(height: 40),
-              ],
+                  ]
+                )
             ),
-          ),
         ],
       ),
     );

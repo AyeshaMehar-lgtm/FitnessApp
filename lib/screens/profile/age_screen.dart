@@ -31,7 +31,7 @@ class _AgeScreenState extends State<AgeScreen> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.white,
         centerTitle: false,
         leading: const BackButton(color: Colors.black),
         titleSpacing: 8,
@@ -62,18 +62,6 @@ class _AgeScreenState extends State<AgeScreen> {
             ),
           ),
         ],
-        flexibleSpace: Container(
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                Color(0xFFEDEDED),
-                Color(0xFFD6D6D6),
-              ],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-            ),
-          ),
-        ),
       ),
       body: Column(
         children: [

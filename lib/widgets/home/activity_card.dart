@@ -3,20 +3,25 @@ import 'package:flutter/material.dart';
 class ActivityCard extends StatelessWidget {
   const ActivityCard({super.key});
 
-  Widget activityBox(String text, Color color, double rotationAngle) {
+  Widget activityBox(
+      String text,
+      Color color,
+      double rotationAngle,
+      ) {
     return Transform.rotate(
       angle: rotationAngle,
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+        padding:
+        const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
         decoration: BoxDecoration(
           color: color,
-          borderRadius: BorderRadius.circular(12),
-          boxShadow: [
+          borderRadius: BorderRadius.circular(14),
+          boxShadow: const [
             BoxShadow(
               color: Colors.black26,
-              blurRadius: 4,
-              offset: Offset(0, 2),
-            )
+              blurRadius: 6,
+              offset: Offset(0, 3),
+            ),
           ],
         ),
         child: Text(
@@ -24,7 +29,7 @@ class ActivityCard extends StatelessWidget {
           style: const TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.bold,
-            fontSize: 14,
+            fontSize: 15,
           ),
         ),
       ),
@@ -34,31 +39,39 @@ class ActivityCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 120,
+      height: 190, // Increased for safety
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(22),
+        boxShadow: const [
+          BoxShadow(
+            color: Colors.black12,
+            blurRadius: 8,
+            offset: Offset(0, 4),
+          ),
+        ],
       ),
       child: Center(
         child: Stack(
           clipBehavior: Clip.none,
           alignment: Alignment.center,
           children: [
-            // Center black box (68h), rotated diagonally, thoda chhota karke
+
+            /// Center Black Box
             Transform.rotate(
-              angle: -0.6, // about -34 degrees
+              angle: -0.6,
               child: Container(
-                padding:
-                const EdgeInsets.symmetric(horizontal: 32, vertical: 20),
+                padding: const EdgeInsets.symmetric(
+                    horizontal: 45, vertical: 26),
                 decoration: BoxDecoration(
                   color: Colors.black,
                   borderRadius: BorderRadius.circular(20),
-                  boxShadow: [
+                  boxShadow: const [
                     BoxShadow(
                       color: Colors.black54,
-                      blurRadius: 6,
-                      offset: Offset(0, 3),
-                    )
+                      blurRadius: 8,
+                      offset: Offset(0, 4),
+                    ),
                   ],
                 ),
                 child: const Text(
@@ -66,51 +79,63 @@ class ActivityCard extends StatelessWidget {
                   style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
-                    fontSize: 26,
+                    fontSize: 28,
                   ),
                 ),
               ),
             ),
 
-            // Top-left orange box "1h" (thoda zyada bahar)
+            /// Top Left
             Positioned(
-              top: -19,  // negative to push outside container
-              left: -10, // negative to push outside container
-              child: activityBox('1h', Colors.orange, 0.3),
+              top: -15,
+              left: -25,
+              child: activityBox(
+                '1h',
+                Colors.orange,
+                0.3,
+              ),
             ),
 
-            // Bottom-left red box "7h" (thoda bahar niche aur left)
+            /// Bottom Left
             Positioned(
-              bottom: -18,
-              left: -55,
-              child: activityBox('7h', Colors.red, -0.4),
+              bottom: -15,
+              left: -45,
+              child: activityBox(
+                '7h',
+                Colors.red,
+                -0.4,
+              ),
             ),
 
-            // Top-right blue box "15h" (thoda upar aur right bahar)
+            /// Top Right
             Positioned(
               top: -10,
               right: -60,
-              child: activityBox('15h', Colors.blue, 0.4),
+              child: activityBox(
+                '15h',
+                Colors.blue,
+                0.4,
+              ),
             ),
 
-            // Bottom-right gray box "87h" (thoda niche aur right bahar)
+            /// Bottom Right
             Positioned(
-              bottom: -15,
-              right: -17,
+              bottom: -38,
+              right: -20,
               child: Transform.rotate(
                 angle: 0.8,
                 child: Container(
-                  padding:
-                  const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 19, vertical: 15),
                   decoration: BoxDecoration(
                     color: Colors.grey[300],
-                    borderRadius: BorderRadius.circular(12),
-                    boxShadow: [
+                    borderRadius: BorderRadius.circular(14),
+                    boxShadow: const [
                       BoxShadow(
                         color: Colors.black26,
-                        blurRadius: 3,
-                        offset: Offset(0, 2),
-                      )
+                        blurRadius: 5,
+                        offset: Offset(0, 3),
+                      ),
                     ],
                   ),
                   child: const Text(
@@ -118,7 +143,7 @@ class ActivityCard extends StatelessWidget {
                     style: TextStyle(
                       color: Colors.black54,
                       fontWeight: FontWeight.bold,
-                      fontSize: 14,
+                      fontSize: 15,
                     ),
                   ),
                 ),

@@ -1,3 +1,4 @@
+import 'package:fitness_app/screens/activity/add_new_activity.dart';
 import 'package:flutter/material.dart';
 
 class ActivityStatusScreen extends StatelessWidget {
@@ -10,6 +11,7 @@ class ActivityStatusScreen extends StatelessWidget {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.white,
+        centerTitle: true,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios, color: Colors.black),
           onPressed: () => Navigator.pop(context),
@@ -22,8 +24,52 @@ class ActivityStatusScreen extends StatelessWidget {
             fontSize: 22,
           ),
         ),
-        centerTitle: true,
+        actions: [
+          TextButton(
+            onPressed: () {
+              // Navigate to the next screen
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const AddNewActivity()), // replace NextScreen with your screen
+              );
+            },
+            child: const Text(
+              "Next",
+              style: TextStyle(
+                color: Colors.black, // black text
+                fontWeight: FontWeight.bold,
+                fontSize: 16,
+              ),
+            ),
+          ),
+          const SizedBox(width: 8), // small padding from edge
+        ],
       ),
+
+
+
+
+
+
+
+
+      // appBar: AppBar(
+      //   elevation: 0,
+      //   backgroundColor: Colors.white,
+      //   leading: IconButton(
+      //     icon: const Icon(Icons.arrow_back_ios, color: Colors.black),
+      //     onPressed: () => Navigator.pop(context),
+      //   ),
+      //   title: const Text(
+      //     'Activity Status',
+      //     style: TextStyle(
+      //       color: Colors.black,
+      //       fontWeight: FontWeight.bold,
+      //       fontSize: 22,
+      //     ),
+      //   ),
+      //   centerTitle: true,
+      // ),
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
@@ -66,8 +112,8 @@ class ActivityStatusScreen extends StatelessWidget {
                       child: Transform.rotate(
                         angle: 0.9,
                         child: Container(
-                          width: 200,
-                          height: 140,
+                          width: 290,
+                          height: 190,
                           decoration: BoxDecoration(
                             color: Colors.black,
                             borderRadius: BorderRadius.circular(20),
@@ -77,7 +123,7 @@ class ActivityStatusScreen extends StatelessWidget {
                             '68h',
                             style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 28,
+                                fontSize: 40,
                                 fontWeight: FontWeight.bold),
                           ),
                         ),
@@ -87,11 +133,11 @@ class ActivityStatusScreen extends StatelessWidget {
                     // Top-left red box 7h
                     Positioned(
                       left: 0,
-                      top: 0,
+                      top: 20,
                       child: Transform.rotate(
                         angle: 0.9,
                         child: Container(
-                          width: 150,
+                          width: 134,
                           height: 80,
                           decoration: BoxDecoration(
                             color: Colors.red,
@@ -103,7 +149,7 @@ class ActivityStatusScreen extends StatelessWidget {
                             style: TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,
-                                fontSize: 20),
+                                fontSize: 30),
                           ),
                         ),
                       ),
@@ -116,8 +162,8 @@ class ActivityStatusScreen extends StatelessWidget {
                       child: Transform.rotate(
                         angle: -0.7,
                         child: Container(
-                          width: 150,
-                          height: 100,
+                          width: 130,
+                          height: 80,
                           decoration: BoxDecoration(
                             color: Colors.orange,
                             borderRadius: BorderRadius.circular(16),
@@ -139,7 +185,7 @@ class ActivityStatusScreen extends StatelessWidget {
                       left: 10,
                       bottom: 20,
                       child: Transform.rotate(
-                        angle: -0.3,
+                        angle: -0.9,
                         child: Container(
                           width: 130,
                           height: 220,
@@ -164,9 +210,9 @@ class ActivityStatusScreen extends StatelessWidget {
                       right: 10,
                       bottom: 0,
                       child: Transform.rotate(
-                        angle: 0.7,
+                        angle: 0.3,
                         child: Container(
-                          width: 150,
+                          width: 140,
                           height: 80,
                           decoration: BoxDecoration(
                             color: Colors.blue,

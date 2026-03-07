@@ -2,8 +2,6 @@ import 'dart:async';
 import 'package:fitness_app/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import '../auth/welcome_screen.dart';
-import '../auth/home_screen.dart';
-
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});

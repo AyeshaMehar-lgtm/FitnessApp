@@ -1,10 +1,10 @@
+import 'package:fitness_app/main_screen.dart';
 import 'package:flutter/material.dart';
-import 'home_screen.dart';
 import 'forgot_password_screen.dart';
 import '../../constants/app_colors.dart';
 import 'sign_up_screen.dart';
-import '../../widgets/back_navigation.dart';
-
+import 'package:flutter/gestures.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
@@ -14,27 +14,22 @@ class SignInScreen extends StatefulWidget {
 }
 
 class _SignInScreenState extends State<SignInScreen> {
-
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-      bool isPasswordHidden = true;
+  bool isPasswordHidden = true;
 
   void signIn() {
-
     String email = emailController.text.trim();
     String password = passwordController.text.trim();
-
 
     if (email.isEmpty || password.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text("Please enter email and password")),
       );
     } else {
-      // Navigate to Welcome Screen
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => const HomeScreen(),
-      )
+        MaterialPageRoute(builder: (context) =>  MainScreen()),
       );
     }
   }
@@ -43,280 +38,297 @@ class _SignInScreenState extends State<SignInScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.white,
-        appBar: AppBar(
-          elevation: 0,
-          backgroundColor: Colors.white,
-          leading: IconButton(
-            icon: const Icon(Icons.arrow_back_ios, color: Colors.black),
-            onPressed: () => Navigator.pop(context),
+      resizeToAvoidBottomInset: true,
+      body: Stack(
+        children: [
+          // Background Image
+          Container(
+            height: 280,
+            width: double.infinity,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: const AssetImage("assets/images/fitness_machine.png"),
+                fit: BoxFit.cover,
+                colorFilter: ColorFilter.mode(
+                  Colors.white.withOpacity(0.4),
+                  BlendMode.modulate,
+                ),
+              ),
+            ),
           ),
-        ),
 
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 25),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(height: 10),
-              Center(
-                child: Container(
-                  height: 80,
-                  width: 80,
-                  decoration: BoxDecoration(
-                    color: AppColors.pulseOrange,
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: Center(
-                    child: Image.asset(
-                      "assets/images/logo.png",
-                      width: 50,
-                      height: 50,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-              ),
-
-              const SizedBox(height: 30),
-
-              // 🔹 Title
-              const Center(
-                child: Text(
-                  "Sign in to Uplift",
-                  style: TextStyle(
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
-                  ),
-                ),
-              ),
-
-              const SizedBox(height: 8),
-
-              const Center(
-                child: Text(
-                  "Let's Personalize your fitness with AI",
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: Colors.grey,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-
-              const SizedBox(height: 40),
-
-              // 🔹 Email Label
-              const Text(
-                "Email Address",
-                style: TextStyle(fontWeight: FontWeight.w500),
-              ),
-
-              const SizedBox(height: 8),
-
-              TextField(
-                controller: emailController,
-                keyboardType: TextInputType.emailAddress,
-                decoration: InputDecoration(
-                  hintText: "Enter your email",
-                  prefixIcon: const Icon(Icons.email_outlined),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                ),
-              ),
-
-              const SizedBox(height: 20),
-
-              // 🔹 Password Label
-              const Text(
-                "Password",
-                style: TextStyle(fontWeight: FontWeight.w500),
-              ),
-
-              const SizedBox(height: 8),
-
-              TextField(
-                controller: passwordController,
-                obscureText: isPasswordHidden,
-                obscuringCharacter: '*',
-                decoration: InputDecoration(
-                  hintText: "Enter your password",
-                  prefixIcon: const Icon(Icons.lock_outline),
-                  suffixIcon: IconButton(
-                    icon: Icon(
-                      isPasswordHidden
-                          ? Icons.remove_red_eye_outlined
-                          : Icons.visibility_off_outlined,
-                    ),
-                    onPressed: () {
-                      setState(() {
-                        isPasswordHidden = !isPasswordHidden;
-
-                      });
-                    },
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                ),
-              ),
-
-              const SizedBox(height: 25),
-
-              // 🔘 Sign In Button
-              SizedBox(
-                width: double.infinity,
-                height: 50,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.black,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                  onPressed: signIn,
-                  child: const Text(
-                    "Sign In",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              ),
-
-              const SizedBox(height: 25),
-
-              // 🔹 Social Icons Buttons
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+          SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 30),
+              child: Column(
                 children: [
-                  // Instagram
-                  GestureDetector(
-                    onTap: () {},
-                    child: Container(
-                      padding: const EdgeInsets.all(12),
-                      decoration: BoxDecoration(
+                  const SizedBox(height: 70),
+
+                  // Logo
+                  Container(
+                    height: 65,
+                    width: 65,
+                    decoration: BoxDecoration(
+                      color: AppColors.pulseOrange,
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Center(
+                      child: Image.asset(
+                        "assets/images/logo.png",
+                        width: 40,
+                        height: 40,
                         color: Colors.white,
-                        shape: BoxShape.circle,
-                        border: Border.all(color: Colors.black, width: 1),
-                      ),
-                      child: const Icon(
-                        Icons.youtube_searched_for,
-                        color: Colors.black,
-                        size: 24,
                       ),
                     ),
                   ),
 
-                  const SizedBox(width: 10),
+                  const SizedBox(height: 20),
 
-                  // Facebook
-                  GestureDetector(
-                    onTap: () {},
-                    child: Container(
-                      padding: const EdgeInsets.all(12),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        shape: BoxShape.circle,
-                        border: Border.all(color: Colors.black, width: 1),
-                      ),
-                      child: const Icon(
-                        Icons.facebook,
-                        color: Colors.black,
-                        size: 24,
-                      ),
-                    ),
-                  ),
-
-                  const SizedBox(width: 10),
-
-                  // LinkedIn
-                  GestureDetector(
-                    onTap: () {},
-                    child: Container(
-                      padding: const EdgeInsets.all(12),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        shape: BoxShape.circle,
-                        border: Border.all(color: Colors.black, width: 1),
-                      ),
-                      child: const Icon(
-                        Icons.snapchat,
-                        color: Colors.black,
-                        size: 24,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-
-              const SizedBox(height: 25),
-
-              // // 🔹 Sign Up
-              Center(
-                child: RichText(
-                  text: TextSpan(
-                    text: "Don't have an account? ",
-                    style: const TextStyle(
-                      color: Colors.black,
+                  const Text(
+                    "Sign In To Uplift",
+                    style: TextStyle(
                       fontWeight: FontWeight.bold,
-
-
+                      fontSize: 28,
+                      color: Colors.black,
                     ),
-                    children: [
-                      WidgetSpan(
-                        child: GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const SignUpScreen(),
-                              ),
-                            );
-                          },
-                          child: const Text(
-                            "Sign Up",
-                            style: TextStyle(
-                              color: Colors.red,
-                              decoration: TextDecoration.underline,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
+                  ),
+
+                  const SizedBox(height: 8),
+
+                  const Text(
+                    "Let’s personalize your fitness with AI",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 16, color: Colors.black54),
+                  ),
+
+                  const SizedBox(height: 40),
+
+                  /// EMAIL LABEL
+                  const Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      "Email Address",
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+
+                  /// EMAIL FIELD
+                  TextField(
+                    controller: emailController,
+                    keyboardType: TextInputType.emailAddress,
+                    decoration: InputDecoration(
+                      hintText: "Email Address",
+                      prefixIcon: const Icon(Icons.email_outlined),
+                      contentPadding: const EdgeInsets.symmetric(
+                          vertical: 18, horizontal: 20),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(30),
+                        borderSide: BorderSide(
+                          color: Colors.orange.shade300,
+                          width: 2,
                         ),
                       ),
-                    ],
-                  ),
-                ),
-              ),
-
-              const SizedBox(height: 15),
-              // 🔹 Forgot Password
-              Center(
-                child: GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const ForgotPasswordScreen(),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(30),
+                        borderSide: BorderSide(
+                          color: AppColors.pulseOrange,
+                          width: 2.5,
+                        ),
                       ),
-                    );
-                  },
-                  child: const Text(
-                    "Forgot Password?",
-                    style: TextStyle(
-                      color: Colors.red,
                     ),
                   ),
-                ),
+
+                  const SizedBox(height: 20),
+
+                  /// PASSWORD LABEL
+                  const Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      "Password",
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+
+                  /// PASSWORD FIELD
+                  TextField(
+                    controller: passwordController,
+                    obscureText: isPasswordHidden,
+                    obscuringCharacter: '*',
+                    decoration: InputDecoration(
+                      hintText: "Password",
+                      prefixIcon: const Icon(Icons.lock_outline),
+                      contentPadding: const EdgeInsets.symmetric(
+                          vertical: 18, horizontal: 20),
+                      suffixIcon: IconButton(
+                        icon: Icon(
+                          isPasswordHidden
+                              ? Icons.remove_red_eye_outlined
+                              : Icons.visibility_off_outlined,
+                          color: Colors.grey.shade600,
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            isPasswordHidden = !isPasswordHidden;
+                          });
+                        },
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(30),
+                        borderSide:
+                        const BorderSide(color: Colors.grey, width: 1.5),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(30),
+                        borderSide: BorderSide(
+                          color: AppColors.pulseOrange,
+                          width: 2.5,
+                        ),
+                      ),
+                    ),
+                  ),
+
+                  const SizedBox(height: 35),
+
+                  /// SIGN IN BUTTON
+                  SizedBox(
+                    width: double.infinity,
+                    height: 50,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.black,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                      ),
+                      onPressed: signIn,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: const [
+                          Text(
+                            "Sign In",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18,
+                              color: Colors.white,
+                            ),
+                          ),
+                          SizedBox(width: 10),
+                          Icon(
+                            Icons.arrow_forward,
+                            color: Colors.white,
+                            size: 20,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+
+                  const SizedBox(height: 40),
+
+                  /// SOCIAL BUTTONS
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      _socialButton(FontAwesomeIcons.instagram),
+                      const SizedBox(width: 20),
+                      _socialButton(Icons.facebook),
+                      const SizedBox(width: 20),
+                      _socialButton(FontAwesomeIcons.linkedin),
+                    ],
+                  ),
+
+                  const SizedBox(height: 30),
+
+                  /// SIGN UP LINK
+                  RichText(
+                    textAlign: TextAlign.center,
+                    text: TextSpan(
+                      text: "Don't have an account? ",
+                      style: const TextStyle(
+                        color: Colors.black87,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 14,
+                      ),
+                      children: [
+                        TextSpan(
+                          text: "Sign Up.",
+                          style: TextStyle(
+                            color: AppColors.pulseOrange,
+                            fontWeight: FontWeight.bold,
+                            decoration: TextDecoration.underline,
+                          ),
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (_) => const SignUpScreen()),
+                              );
+                            },
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  const SizedBox(height: 10),
+
+                  /// FORGOT PASSWORD
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (_) => const ForgotPasswordScreen()),
+                      );
+                    },
+                    child: Text(
+                      "Forgot Password?",
+                      style: TextStyle(
+                        color: AppColors.pulseOrange,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 14,
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                  ),
+
+                  const SizedBox(height: 40),
+                ],
               ),
-              const SizedBox(height: 30),
-              ],
-            ), // Column
-          ), // Padding
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  /// SOCIAL BUTTON
+  Widget _socialButton(IconData iconData) {
+    return GestureDetector(
+      onTap: () {},
+      child: Container(
+        width: 48,
+        height: 48,
+        decoration: const BoxDecoration(
+          color: Colors.white,
+          shape: BoxShape.circle,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black12,
+              blurRadius: 5,
+              offset: Offset(0, 2),
+            ),
+          ],
         ),
-      );
-    }
-}// S
+        child: Icon(
+          iconData,
+          color: Colors.black87,
+          size: 28,
+        ),
+      ),
+    );
+  }
+}

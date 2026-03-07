@@ -6,11 +6,11 @@ class AiCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 140,
+      height: 180,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
         image: const DecorationImage(
-          image: AssetImage("assets/images/ai.png"),
+          image: AssetImage("assets/images/virtual_ai.png"),
           fit: BoxFit.cover,
         ),
       ),
