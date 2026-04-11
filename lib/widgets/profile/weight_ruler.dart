@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class WeightRuler extends StatefulWidget {
@@ -37,8 +36,6 @@ class _WeightRulerState extends State<WeightRuler> {
       child: Stack(
         alignment: Alignment.center,
         children: [
-
-          /// RULER LINES
           ListView.builder(
             controller: _controller,
             scrollDirection: Axis.horizontal,
@@ -62,7 +59,6 @@ class _WeightRulerState extends State<WeightRuler> {
             },
           ),
 
-          /// NUMBERS (SEPARATE LAYER ⭐ FIX)
           IgnorePointer(
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
@@ -94,7 +90,6 @@ class _WeightRulerState extends State<WeightRuler> {
             ),
           ),
 
-          /// CENTER INDICATOR
           Align(
             alignment:Alignment.bottomCenter,
             child:Padding(

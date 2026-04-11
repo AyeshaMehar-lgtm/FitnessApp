@@ -36,14 +36,11 @@ class CustomTextField extends StatelessWidget {
 
         decoration: InputDecoration(
           border: InputBorder.none,
-
-          /// LEFT ICON
           prefixIcon: Icon(
             icon,
             color: Colors.black54,
           ),
 
-          /// HINT TEXT
           hintText: hintText,
           hintStyle: const TextStyle(
             color: Colors.grey,

@@ -84,7 +84,6 @@ class _GoalScreenState extends State<GoalScreen> {
         ),
             const SizedBox(height: 16),
 
-            /// Goal Options
             Expanded(
               child: ListView.builder(
                 itemCount: goals.length,
@@ -102,7 +101,6 @@ class _GoalScreenState extends State<GoalScreen> {
 
             const SizedBox(height: 16),
 
-            /// Continue Button
             NextNavigation(
               nextScreen: const ActivityStatusScreen(),
               buttonText: 'Continue →',

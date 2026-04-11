@@ -26,8 +26,6 @@ class _WeightScreenState extends State<WeightScreen> {
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             children: [
-
-              /// TOP BAR
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -54,7 +52,6 @@ class _WeightScreenState extends State<WeightScreen> {
 
               const SizedBox(height: 40),
 
-              /// TITLE
               const Text(
                 "What’s your current\nweight right now?",
                 textAlign: TextAlign.center,
@@ -67,7 +64,6 @@ class _WeightScreenState extends State<WeightScreen> {
 
               const SizedBox(height: 30),
 
-              /// KG / LBS
               UnitToggle(
                 selectedUnit: selectedUnit,
                 onChanged: (value) {
@@ -77,7 +73,6 @@ class _WeightScreenState extends State<WeightScreen> {
 
               const SizedBox(height: 50),
 
-              /// WEIGHT TEXT
               Text(
                 "${weight.toInt()} $selectedUnit",
                 style: const TextStyle(
@@ -89,7 +84,6 @@ class _WeightScreenState extends State<WeightScreen> {
 
               const SizedBox(height: 20),
 
-              /// RULER
               WeightRuler(
                 onChanged: (value) {
                   setState(() => weight = value);
@@ -98,7 +92,6 @@ class _WeightScreenState extends State<WeightScreen> {
 
               const Spacer(),
 
-              /// ✅ CONTINUE BUTTON (Fixed)
               SizedBox(
                 width: double.infinity,
                 height: 55,
@@ -107,7 +100,7 @@ class _WeightScreenState extends State<WeightScreen> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (_) => const GenderScreen(), // next screen
+                        builder: (_) => const GenderScreen(),
                       ),
                     );
                   },

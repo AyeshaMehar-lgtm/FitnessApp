@@ -16,7 +16,9 @@ class SignInScreen extends StatefulWidget {
 class _SignInScreenState extends State<SignInScreen> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+
   bool isPasswordHidden = true;
+  bool isEmailHidden = false;
 
   void signIn() {
     String email = emailController.text.trim();
@@ -29,7 +31,7 @@ class _SignInScreenState extends State<SignInScreen> {
     } else {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) =>  MainScreen()),
+        MaterialPageRoute(builder: (context) => MainScreen()),
       );
     }
   }
@@ -41,7 +43,7 @@ class _SignInScreenState extends State<SignInScreen> {
       resizeToAvoidBottomInset: true,
       body: Stack(
         children: [
-          // Background Image
+
           Container(
             height: 280,
             width: double.infinity,
@@ -65,7 +67,6 @@ class _SignInScreenState extends State<SignInScreen> {
                 children: [
                   const SizedBox(height: 70),
 
-                  // Logo
                   Container(
                     height: 65,
                     width: 65,
@@ -104,7 +105,6 @@ class _SignInScreenState extends State<SignInScreen> {
 
                   const SizedBox(height: 40),
 
-                  /// EMAIL LABEL
                   const Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
@@ -113,16 +113,30 @@ class _SignInScreenState extends State<SignInScreen> {
                     ),
                   ),
                   const SizedBox(height: 8),
-
-                  /// EMAIL FIELD
                   TextField(
                     controller: emailController,
                     keyboardType: TextInputType.emailAddress,
+                    obscureText: isEmailHidden,
                     decoration: InputDecoration(
                       hintText: "Email Address",
                       prefixIcon: const Icon(Icons.email_outlined),
                       contentPadding: const EdgeInsets.symmetric(
                           vertical: 18, horizontal: 20),
+
+                      suffixIcon: IconButton(
+                        icon: Icon(
+                          isEmailHidden
+                              ? Icons.visibility_off_outlined
+                              : Icons.remove_red_eye_outlined,
+                          color: Colors.grey.shade600,
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            isEmailHidden = !isEmailHidden;
+                          });
+                        },
+                      ),
+
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(30),
                         borderSide: BorderSide(
@@ -142,7 +156,6 @@ class _SignInScreenState extends State<SignInScreen> {
 
                   const SizedBox(height: 20),
 
-                  /// PASSWORD LABEL
                   const Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
@@ -152,7 +165,6 @@ class _SignInScreenState extends State<SignInScreen> {
                   ),
                   const SizedBox(height: 8),
 
-                  /// PASSWORD FIELD
                   TextField(
                     controller: passwordController,
                     obscureText: isPasswordHidden,
@@ -192,7 +204,6 @@ class _SignInScreenState extends State<SignInScreen> {
 
                   const SizedBox(height: 35),
 
-                  /// SIGN IN BUTTON
                   SizedBox(
                     width: double.infinity,
                     height: 50,
@@ -228,7 +239,6 @@ class _SignInScreenState extends State<SignInScreen> {
 
                   const SizedBox(height: 40),
 
-                  /// SOCIAL BUTTONS
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -242,7 +252,6 @@ class _SignInScreenState extends State<SignInScreen> {
 
                   const SizedBox(height: 30),
 
-                  /// SIGN UP LINK
                   RichText(
                     textAlign: TextAlign.center,
                     text: TextSpan(
@@ -275,7 +284,6 @@ class _SignInScreenState extends State<SignInScreen> {
 
                   const SizedBox(height: 10),
 
-                  /// FORGOT PASSWORD
                   GestureDetector(
                     onTap: () {
                       Navigator.push(
@@ -305,7 +313,6 @@ class _SignInScreenState extends State<SignInScreen> {
     );
   }
 
-  /// SOCIAL BUTTON
   Widget _socialButton(IconData iconData) {
     return GestureDetector(
       onTap: () {},

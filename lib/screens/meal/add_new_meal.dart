@@ -20,23 +20,20 @@ class _AddNewMealState extends State<AddNewMeal> {
 
   int selectedInputOption = 0;
 
-  // ✅ Meal select karne par slider values update karna
   void updateMacrosByMeal(int mealIndex) {
     setState(() {
       selectedMeal = mealIndex;
 
       if (mealIndex == 0) {
-        // Breakfast
         protein = 25;
         carbs = 20;
         fats = 10;
       } else if (mealIndex == 1) {
-        // Dinner
         protein = 30;
         carbs = 15;
         fats = 20;
       } else {
-        // Snack
+
         protein = 15;
         carbs = 25;
         fats = 12;
@@ -53,7 +50,6 @@ class _AddNewMealState extends State<AddNewMeal> {
       backgroundColor: Colors.white,
       resizeToAvoidBottomInset: true,
 
-      /// ✅ Continue Button Keyboard Safe
       bottomNavigationBar: Padding(
         padding: EdgeInsets.only(
           left: 16,
@@ -69,7 +65,6 @@ class _AddNewMealState extends State<AddNewMeal> {
       body: Column(
         children: [
 
-          /// 🔥 HEADER
           SafeArea(
             child: Container(
               padding: const EdgeInsets.all(16),
@@ -83,7 +78,6 @@ class _AddNewMealState extends State<AddNewMeal> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
 
-                  /// Back + Title
                   Row(
                     children: [
                       GestureDetector(
@@ -111,8 +105,6 @@ class _AddNewMealState extends State<AddNewMeal> {
                   ),
 
                   const SizedBox(height: 20),
-
-                  /// Manual / AI Toggle
                   Row(
                     children: [
                       Expanded(
@@ -159,15 +151,12 @@ class _AddNewMealState extends State<AddNewMeal> {
             ),
           ),
 
-          /// BODY
           Expanded(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-
-                  /// Meal Name
                   const Text(
                     "Meal Name",
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
@@ -180,7 +169,6 @@ class _AddNewMealState extends State<AddNewMeal> {
 
                   const SizedBox(height: 15),
 
-                  /// Meal Type
                   const Text(
                     "Meal Type",
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
@@ -215,7 +203,6 @@ class _AddNewMealState extends State<AddNewMeal> {
                     ],
                   ),
 
-                  /// 🔥 Sliders Hide When Keyboard Open
                   if (!isKeyboardOpen) ...[
                     const SizedBox(height: 10),
                     buildSlider("Total Protein", protein, (value) => setState(() => protein = value)),
@@ -231,13 +218,12 @@ class _AddNewMealState extends State<AddNewMeal> {
     );
   }
 
-  /// SLIDER WITH LABELS
   Widget buildSlider(String title, double value, Function(double) onChanged) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          "$title (${value.toInt()}g)", // 👈 show current value
+          "$title (${value.toInt()}g)",
           style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
         ),
         const SizedBox(height: 5),
@@ -249,7 +235,6 @@ class _AddNewMealState extends State<AddNewMeal> {
           activeColor: Colors.orange,
           onChanged: onChanged,
         ),
-        /// 10 20 30 Labels
         Row(
           children: const [
             Expanded(

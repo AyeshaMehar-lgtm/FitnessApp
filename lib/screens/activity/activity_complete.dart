@@ -25,8 +25,6 @@ class _ActivityScreenState extends State<ActivityComplete> {
             children: [
 
               const SizedBox(height: 20),
-
-              /// Back Button
               Align(
                 alignment: Alignment.topLeft,
                 child: GestureDetector(
@@ -54,7 +52,6 @@ class _ActivityScreenState extends State<ActivityComplete> {
 
               const SizedBox(height: 40),
 
-              /// Donut Chart
               SizedBox(
                 height: 260,
                 child: PieChart(
@@ -68,7 +65,6 @@ class _ActivityScreenState extends State<ActivityComplete> {
 
               const SizedBox(height: 20),
 
-              /// Legend
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -82,7 +78,6 @@ class _ActivityScreenState extends State<ActivityComplete> {
 
               const Spacer(),
 
-              /// Simulate Button
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xffE8E1F5),
@@ -108,7 +103,6 @@ class _ActivityScreenState extends State<ActivityComplete> {
 
               const SizedBox(height: 20),
 
-              /// Great Thanks Button
               GestureDetector(
                 onTap: () {
                   ScaffoldMessenger.of(context).showSnackBar(
@@ -144,7 +138,6 @@ class _ActivityScreenState extends State<ActivityComplete> {
     );
   }
 
-  /// Pie Sections
   List<PieChartSectionData> _buildSections() {
     return [
       PieChartSectionData(
@@ -183,7 +176,6 @@ class _ActivityScreenState extends State<ActivityComplete> {
     ];
   }
 
-  /// Legend Widget
   Widget _legendItem(Color color, String text) {
     return Row(
       children: [

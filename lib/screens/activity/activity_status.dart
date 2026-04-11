@@ -42,41 +42,16 @@ class ActivityStatusScreen extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(width: 8), // small padding from edge
+          const SizedBox(width: 8),
         ],
       ),
 
-
-
-
-
-
-
-
-      // appBar: AppBar(
-      //   elevation: 0,
-      //   backgroundColor: Colors.white,
-      //   leading: IconButton(
-      //     icon: const Icon(Icons.arrow_back_ios, color: Colors.black),
-      //     onPressed: () => Navigator.pop(context),
-      //   ),
-      //   title: const Text(
-      //     'Activity Status',
-      //     style: TextStyle(
-      //       color: Colors.black,
-      //       fontWeight: FontWeight.bold,
-      //       fontSize: 22,
-      //     ),
-      //   ),
-      //   centerTitle: true,
-      // ),
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
           children: [
             const SizedBox(height: 20),
 
-            /// Legend Row 1: Running, Jogging, Biking
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: const [
@@ -88,7 +63,6 @@ class ActivityStatusScreen extends StatelessWidget {
 
             const SizedBox(height: 10),
 
-            /// Legend Row 2: Weightlifting, Yoga
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: const [
@@ -99,13 +73,12 @@ class ActivityStatusScreen extends StatelessWidget {
 
             const SizedBox(height: 40),
 
-            /// Boxes in diagonal
             Expanded(
               child: Center(
                 child: Stack(
                   clipBehavior: Clip.none,
                   children: [
-                    // Big center black box (68h)
+
                     Positioned(
                       left: 45,
                       top: 150,
@@ -130,7 +103,6 @@ class ActivityStatusScreen extends StatelessWidget {
                       ),
                     ),
 
-                    // Top-left red box 7h
                     Positioned(
                       left: 0,
                       top: 20,
@@ -155,7 +127,6 @@ class ActivityStatusScreen extends StatelessWidget {
                       ),
                     ),
 
-                    // Top-right orange box 1h
                     Positioned(
                       right: 0,
                       top: 20,
@@ -180,7 +151,6 @@ class ActivityStatusScreen extends StatelessWidget {
                       ),
                     ),
 
-                    // Bottom-left grey box 87h
                     Positioned(
                       left: 10,
                       bottom: 20,
@@ -205,7 +175,6 @@ class ActivityStatusScreen extends StatelessWidget {
                       ),
                     ),
 
-                    // Bottom-right blue box 15h
                     Positioned(
                       right: 10,
                       bottom: 0,
@@ -240,7 +209,6 @@ class ActivityStatusScreen extends StatelessWidget {
   }
 }
 
-/// Legend Dot Widget
 class LegendDot extends StatelessWidget {
   final Color color;
   final String label;

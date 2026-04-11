@@ -28,8 +28,6 @@ class _ActivityScreenState extends State<ActivityScreen> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-
-            /// HEADER
             Stack(
               clipBehavior: Clip.none,
               children: [
@@ -42,13 +40,11 @@ class _ActivityScreenState extends State<ActivityScreen> {
                       bottomRight: Radius.circular(30),
                     ),
                     image: DecorationImage(
-                      image: AssetImage("assets/images/profile2.png"),
+                      image: AssetImage("assets/images/profile_img.png"),
                       fit: BoxFit.cover,
                     ),
                   ),
                 ),
-
-                /// PROFILE IMAGE
                 Positioned(
                   bottom: -40,
                   left: 0,
@@ -64,7 +60,7 @@ class _ActivityScreenState extends State<ActivityScreen> {
                       backgroundColor: Colors.white,
                       child: const CircleAvatar(
                         radius: 40,
-                        backgroundImage: AssetImage("assets/profile.jpg"),
+                        backgroundImage: AssetImage("assets/images/profile2.png"),
                       ),
                     ),
                   ),
@@ -94,8 +90,6 @@ class _ActivityScreenState extends State<ActivityScreen> {
             ),
 
             const SizedBox(height: 25),
-
-            /// SCORE CARD
             Container(
               margin: const EdgeInsets.symmetric(horizontal: 20),
               padding: const EdgeInsets.all(16),
@@ -109,8 +103,6 @@ class _ActivityScreenState extends State<ActivityScreen> {
 
               child: Column(
                 children: [
-
-                  /// TITLE ROW
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -125,8 +117,6 @@ class _ActivityScreenState extends State<ActivityScreen> {
                           )
                         ],
                       ),
-
-                      /// WEEKLY BUTTON
                       GestureDetector(
                         onTap: (){
                           setState(() {
@@ -146,8 +136,6 @@ class _ActivityScreenState extends State<ActivityScreen> {
                   ),
 
                   const SizedBox(height: 20),
-
-                  /// GRAPH
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: List.generate(
@@ -160,8 +148,6 @@ class _ActivityScreenState extends State<ActivityScreen> {
             ),
 
             const SizedBox(height: 20),
-
-            /// INFO CARDS
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
 
@@ -217,8 +203,6 @@ class _ActivityScreenState extends State<ActivityScreen> {
       ),
     );
   }
-
-  /// BAR WIDGET
   Widget _bar(double value,String day,int index){
 
     bool highlight = selectedIndex == index;
@@ -267,7 +251,6 @@ class _ActivityScreenState extends State<ActivityScreen> {
     );
   }
 
-  /// INFO CARD
   Widget _infoCard(IconData icon,String title,String subtitle,Color color,VoidCallback onTap){
 
     return GestureDetector(
@@ -314,7 +297,6 @@ class _ActivityScreenState extends State<ActivityScreen> {
     );
   }
 
-  /// DIALOG
   void _showDialog(String title,String message){
 
     showDialog(

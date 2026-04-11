@@ -10,7 +10,6 @@ class ResetScreen extends StatelessWidget {
       body: Stack(
         children: [
 
-          /// 🔹 Gradient Background
           Container(
             width: double.infinity,
             height: double.infinity,
@@ -19,15 +18,14 @@ class ResetScreen extends StatelessWidget {
                 begin: Alignment.centerLeft,
                 end: Alignment.centerRight,
                 colors: [
-                  Colors.white, // left half white
-                  Color(0xFFB0B0B0), // gray color for right half
+                  Colors.white,
+                  Color(0xFFB0B0B0),
                 ],
-                stops: [0.5, 1.0], // 50% white, 50% gray
+                stops: [0.5, 1.0],
               ),
             ),
           ),
 
-          /// 🔒 Background Half Lock Image
           Positioned(
             right: -MediaQuery.of(context).size.width * 0.3,
             top: 0,
@@ -42,7 +40,6 @@ class ResetScreen extends StatelessWidget {
             ),
           ),
 
-          /// CARD
           Center(
             child: Container(
               margin: const EdgeInsets.symmetric(horizontal: 25),
@@ -85,7 +82,6 @@ class ResetScreen extends StatelessWidget {
 
                   const SizedBox(height: 25),
 
-                  /// RESEND BUTTON
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.black,
@@ -109,7 +105,6 @@ class ResetScreen extends StatelessWidget {
             ),
           ),
 
-          /// CLOSE BUTTON → Navigate to AddNewMeal Screen
           Positioned(
             bottom: 40,
             left: 0,

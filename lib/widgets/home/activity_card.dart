@@ -39,7 +39,7 @@ class ActivityCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 190, // Increased for safety
+      height: 190,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(22),
@@ -56,8 +56,6 @@ class ActivityCard extends StatelessWidget {
           clipBehavior: Clip.none,
           alignment: Alignment.center,
           children: [
-
-            /// Center Black Box
             Transform.rotate(
               angle: -0.6,
               child: Container(
@@ -85,7 +83,6 @@ class ActivityCard extends StatelessWidget {
               ),
             ),
 
-            /// Top Left
             Positioned(
               top: -15,
               left: -25,
@@ -96,7 +93,6 @@ class ActivityCard extends StatelessWidget {
               ),
             ),
 
-            /// Bottom Left
             Positioned(
               bottom: -15,
               left: -45,
@@ -107,7 +103,6 @@ class ActivityCard extends StatelessWidget {
               ),
             ),
 
-            /// Top Right
             Positioned(
               top: -10,
               right: -60,
@@ -117,8 +112,6 @@ class ActivityCard extends StatelessWidget {
                 0.4,
               ),
             ),
-
-            /// Bottom Right
             Positioned(
               bottom: -38,
               right: -20,

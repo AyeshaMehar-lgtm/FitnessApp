@@ -9,7 +9,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
-  // 🔹 Logout Function
   Future<void> logout(BuildContext context) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setBool("isLoggedIn", false);
@@ -20,7 +19,6 @@ class ProfileScreen extends StatelessWidget {
     );
   }
 
-  // 🔹 Reusable Navigation Tile
   Widget buildTile(BuildContext context, String title, Widget screen) {
     return Card(
       child: ListTile(
@@ -49,8 +47,6 @@ class ProfileScreen extends StatelessWidget {
           children: [
 
             SizedBox(height: 20),
-
-            // 🔹 Profile Options
             buildTile(context, "Age", AgeScreen()),
             buildTile(context, "Gender", GenderScreen()),
             buildTile(context, "Weight", WeightScreen()),
@@ -58,7 +54,6 @@ class ProfileScreen extends StatelessWidget {
 
             SizedBox(height: 30),
 
-            // 🔹 Logout Button
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.black,

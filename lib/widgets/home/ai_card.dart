@@ -16,7 +16,6 @@ class AiCard extends StatelessWidget {
       ),
       child: Stack(
         children: [
-          // Dark overlay with text aligned bottom left
           Container(
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
@@ -36,7 +35,6 @@ class AiCard extends StatelessWidget {
             ),
           ),
 
-          // Small white box bottom-right corner
           Positioned(
             bottom: 12,
             right: 12,
@@ -54,7 +52,6 @@ class AiCard extends StatelessWidget {
                   ),
                 ],
               ),
-              // You can add icon or text inside this box if needed
             ),
           ),
         ],

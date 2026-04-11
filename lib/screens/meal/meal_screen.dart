@@ -21,7 +21,6 @@ class _MealScreenState extends State<MealScreen> {
             children: [
               const SizedBox(height: 20),
 
-              // Top Back Button
               Align(
                 alignment: Alignment.centerLeft,
                 child: Container(
@@ -37,7 +36,6 @@ class _MealScreenState extends State<MealScreen> {
 
               const SizedBox(height: 20),
 
-              // Meal Image
               Container(
                 height: 220,
                 width: 220,
@@ -59,7 +57,6 @@ class _MealScreenState extends State<MealScreen> {
 
               const SizedBox(height: 30),
 
-              // Category Tag
               Container(
                 padding:
                 const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
@@ -78,7 +75,6 @@ class _MealScreenState extends State<MealScreen> {
 
               const SizedBox(height: 20),
 
-              // Meal Title
               const Text(
                 "North Texas Salad With\nNutmeg & Radish",
                 textAlign: TextAlign.center,
@@ -90,7 +86,6 @@ class _MealScreenState extends State<MealScreen> {
 
               const SizedBox(height: 15),
 
-              // Time + Calories
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: const [
@@ -114,7 +109,6 @@ class _MealScreenState extends State<MealScreen> {
 
               const Spacer(),
 
-              // Add Meal Button
               SizedBox(
                 width: double.infinity,
                 height: 60,
@@ -126,7 +120,6 @@ class _MealScreenState extends State<MealScreen> {
                     ),
                   ),
                   onPressed: () {
-                    // Navigate to Add New Meal Screen
                     Navigator.push(
                       context,
                       MaterialPageRoute(

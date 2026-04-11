@@ -58,7 +58,6 @@ class _GenderScreenState extends State<GenderScreen> {
             ),
             const SizedBox(height: 10),
 
-            /// Gender Cards
             GenderCard(
               title: 'Male',
               imagePath: 'assets/images/male.png',
@@ -75,7 +74,6 @@ class _GenderScreenState extends State<GenderScreen> {
 
             const SizedBox(height: 40),
 
-            /// Skip Button
             GestureDetector(
               onTap: () => setState(() => selectedGender = null),
               child: Container(
@@ -97,7 +95,6 @@ class _GenderScreenState extends State<GenderScreen> {
 
             const SizedBox(height: 16),
 
-            /// Continue Button via NextNavigation
             NextNavigation(
               nextScreen: const GoalScreen(),
               buttonText: 'Continue →',

@@ -36,8 +36,6 @@ class GenderCard extends StatelessWidget {
         ),
         child: Row(
           children: [
-
-            /// Radio Button Left with Text Above
             Container(
               width: 60,
               margin: const EdgeInsets.only(left: 12),
@@ -73,7 +71,6 @@ class GenderCard extends StatelessWidget {
 
             const SizedBox(width: 5),
 
-            /// Image Right
             Expanded(
               child: ClipRRect(
                 borderRadius: const BorderRadius.horizontal(

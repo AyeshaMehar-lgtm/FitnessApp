@@ -22,8 +22,6 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-
-              // BACK BUTTON
               IconButton(
                 onPressed: () => Navigator.pop(context),
                 icon: const Icon(Icons.arrow_back_ios_new),
@@ -47,7 +45,6 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
 
               const SizedBox(height: 25),
 
-              // EMAIL
               ResetOptionTile(
                 icon: Icons.email_outlined,
                 iconBg: Colors.orange,
@@ -59,7 +56,6 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                 },
               ),
 
-              // 2FA
               ResetOptionTile(
                 icon: Icons.lock_outline,
                 iconBg: Colors.blue,
@@ -71,7 +67,6 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                 },
               ),
 
-              // GOOGLE AUTH
               ResetOptionTile(
                 icon: Icons.local_fire_department_outlined,
                 iconBg: Colors.purple,
@@ -85,7 +80,6 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
 
               const Spacer(),
 
-              // RESET PASSWORD BUTTON
               SizedBox(
                 width: double.infinity,
                 height: 55,
@@ -99,7 +93,6 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                   onPressed: selectedIndex == -1
                       ? null
                       : () {
-                    // ✅ Navigate to ResetPasswordScreen
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(

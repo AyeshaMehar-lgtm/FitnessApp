@@ -16,10 +16,10 @@ class _MainScreenState extends State<MainScreen> {
 
 
   final List<Widget> _pages = [
-    HomeScreen(),             // Home Tab
-    MealScreen(),       // Meals Tab
-    ActivityScreen(),   // Activity Tab
-    ProfileScreen(),              // Profile Tab (ye overview screen ho sakti hai)
+    HomeScreen(),
+    MealScreen(),
+    ActivityScreen(),
+    ProfileScreen(),
   ];
 
   void _onItemTapped(int index) {

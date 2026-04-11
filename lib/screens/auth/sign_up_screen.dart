@@ -18,6 +18,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   bool showPasswordError = false;
 
+  bool isEmailHidden = false;
+  bool isPasswordHidden = true;
+  bool isConfirmPasswordHidden = true;
+
   void signUp() {
     String email = emailController.text.trim();
     String password = passwordController.text.trim();
@@ -41,14 +45,46 @@ class _SignUpScreenState extends State<SignUpScreen> {
       showPasswordError = false;
     });
 
-    // ✅ Navigate to ForgotPasswordScreen
     Navigator.push(
       context,
       MaterialPageRoute(
         builder: (context) => const ForgotPasswordScreen(),
       ),
     );
-  } // ✅ METHOD CLOSED PROPERLY HERE
+  }
+
+  InputDecoration customInputDecoration({
+    required String hint,
+    required IconData icon,
+    Widget? suffix,
+  }) {
+    return InputDecoration(
+      hintText: hint,
+      prefixIcon: Icon(icon),
+
+      suffixIcon: suffix,
+
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(10),
+      ),
+
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(10),
+        borderSide: const BorderSide(
+          color: Colors.grey,
+          width: 1.5,
+        ),
+      ),
+
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(10),
+        borderSide: BorderSide(
+          color: AppColors.pulseOrange,
+          width: 2,
+        ),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +98,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
             children: [
               const SizedBox(height: 80),
 
-              /// Logo Box
               Center(
                 child: Container(
                   height: 80,
@@ -101,10 +136,21 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
               TextField(
                 controller: emailController,
-                decoration: InputDecoration(
-                  hintText: "Enter your email",
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
+                obscureText: isEmailHidden,
+                decoration: customInputDecoration(
+                  hint: "Enter your email",
+                  icon: Icons.email_outlined,
+                  suffix: IconButton(
+                    icon: Icon(
+                      isEmailHidden
+                          ? Icons.visibility_off_outlined
+                          : Icons.remove_red_eye_outlined,
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        isEmailHidden = !isEmailHidden;
+                      });
+                    },
                   ),
                 ),
               ),
@@ -116,11 +162,21 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
               TextField(
                 controller: passwordController,
-                obscureText: true,
-                decoration: InputDecoration(
-                  hintText: "Enter your password",
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
+                obscureText: isPasswordHidden,
+                decoration: customInputDecoration(
+                  hint: "Enter your password",
+                  icon: Icons.lock_outline,
+                  suffix: IconButton(
+                    icon: Icon(
+                      isPasswordHidden
+                          ? Icons.remove_red_eye_outlined
+                          : Icons.visibility_off_outlined,
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        isPasswordHidden = !isPasswordHidden;
+                      });
+                    },
                   ),
                 ),
               ),
@@ -132,18 +188,28 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
               TextField(
                 controller: confirmPasswordController,
-                obscureText: true,
-                decoration: InputDecoration(
-                  hintText: "Confirm your password",
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
+                obscureText: isConfirmPasswordHidden,
+                decoration: customInputDecoration(
+                  hint: "Confirm your password",
+                  icon: Icons.lock_outline,
+                  suffix: IconButton(
+                    icon: Icon(
+                      isConfirmPasswordHidden
+                          ? Icons.remove_red_eye_outlined
+                          : Icons.visibility_off_outlined,
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        isConfirmPasswordHidden =
+                        !isConfirmPasswordHidden;
+                      });
+                    },
                   ),
                 ),
               ),
 
               const SizedBox(height: 10),
 
-              /// 🔴 Error Box
               if (showPasswordError)
                 Container(
                   padding: const EdgeInsets.all(12),
@@ -172,7 +238,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
               const SizedBox(height: 60),
 
-              /// ✅ Sign Up Button
               SizedBox(
                 width: double.infinity,
                 height: 50,
@@ -196,7 +261,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
               const SizedBox(height: 25),
 
-              /// Already have account? Sign In
               Center(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,

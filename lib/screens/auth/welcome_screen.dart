@@ -154,7 +154,6 @@ class WelcomeScreen extends StatelessWidget {
       body: Stack(
         children: [
 
-          /// Background Image
           Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
@@ -164,12 +163,10 @@ class WelcomeScreen extends StatelessWidget {
             ),
           ),
 
-          /// Dark Overlay
           Container(
             color: Colors.black.withOpacity(0.6),
           ),
 
-          /// Content
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 24),
             child: Column(
@@ -177,7 +174,6 @@ class WelcomeScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
 
-                /// Logo
                 Image.asset(
                   "assets/images/logo.png",
                   width: 60,
@@ -187,7 +183,6 @@ class WelcomeScreen extends StatelessWidget {
 
                 const SizedBox(height: 20),
 
-                /// Title
                 const Text(
                   "Welcome To\nUplift.ai",
                   textAlign: TextAlign.center,
@@ -200,7 +195,6 @@ class WelcomeScreen extends StatelessWidget {
 
                 const SizedBox(height: 12),
 
-                /// Subtitle
                 const Text(
                   "Your personal fitness AI Assistant 🤖",
                   textAlign: TextAlign.center,
@@ -212,7 +206,6 @@ class WelcomeScreen extends StatelessWidget {
 
                 const SizedBox(height: 40),
 
-                /// ✅ Get Started Button (direct navigation)
                 ElevatedButton(
                   onPressed: () {
                     Navigator.push(
@@ -223,7 +216,7 @@ class WelcomeScreen extends StatelessWidget {
                     );
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.pulseOrange, // Button white
+                    backgroundColor: AppColors.pulseOrange,
                     padding: const EdgeInsets.symmetric(
                         vertical: 16, horizontal: 50),
                     shape: RoundedRectangleBorder(
@@ -233,7 +226,7 @@ class WelcomeScreen extends StatelessWidget {
                   child: const Text(
                     "Get Started",
                     style: TextStyle(
-                      color: Colors.white, // Text black
+                      color: Colors.white,
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
                     ),
@@ -242,7 +235,6 @@ class WelcomeScreen extends StatelessWidget {
 
                 const SizedBox(height: 20),
 
-                /// Sign In / Sign Up Row
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -252,7 +244,6 @@ class WelcomeScreen extends StatelessWidget {
                       style: TextStyle(color: Colors.white70),
                     ),
 
-                    /// Sign In
                     GestureDetector(
                       onTap: () {
                         Navigator.push(

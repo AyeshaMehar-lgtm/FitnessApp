@@ -10,7 +10,7 @@ class AddNewActivity extends StatefulWidget {
 }
 
 class _AddNewActivityState extends State<AddNewActivity> {
-  int selectedIndex = -1; // No selection by default
+  int selectedIndex = -1;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,6 @@ class _AddNewActivityState extends State<AddNewActivity> {
 
               const SizedBox(height: 10),
 
-              // Back Button
               Container(
                 height: 40,
                 width: 40,
@@ -43,7 +42,6 @@ class _AddNewActivityState extends State<AddNewActivity> {
 
               const SizedBox(height: 25),
 
-              // Title
               const Center(
                 child: Text(
                   "Add New Activity",
@@ -56,7 +54,6 @@ class _AddNewActivityState extends State<AddNewActivity> {
 
               const SizedBox(height: 8),
 
-              // Subtitle
               const Center(
                 child: Text(
                   "Please select activity type",
@@ -70,7 +67,6 @@ class _AddNewActivityState extends State<AddNewActivity> {
 
               const SizedBox(height: 30),
 
-              // Grid
               Expanded(
                 child: GridView.builder(
                   itemCount: 9,
@@ -125,7 +121,6 @@ class _AddNewActivityState extends State<AddNewActivity> {
                 ),
               ),
 
-              // Continue Button
               Padding(
                 padding: const EdgeInsets.only(bottom: 20),
                 child: SizedBox(
